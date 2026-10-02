@@ -1,0 +1,227 @@
+/* ==========================================================================
+   ANIMATIONS & MOTION SYSTEM — EHSAN MAHER PORTFOLIO
+   Intensity: 3/5 — Smooth, Restrained, Editorial, Production-Aware
+   Respects prefers-reduced-motion
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. WORD-BY-WORD & ELEMENT REVEAL
+   -------------------------------------------------------------------------- */
+.word-reveal-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word-reveal-item {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.9s var(--ease-editorial), opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.word-reveal-item.revealed {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hero-section .word-reveal-item.revealed {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  transition-delay: 0s;
+}
+
+.hero-section .word-reveal-item {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+/* Staggered entrance delays */
+.delay-1 { transition-delay: 80ms; }
+.delay-2 { transition-delay: 160ms; }
+.delay-3 { transition-delay: 240ms; }
+.delay-4 { transition-delay: 320ms; }
+.delay-5 { transition-delay: 400ms; }
+.delay-6 { transition-delay: 480ms; }
+.delay-7 { transition-delay: 560ms; }
+.delay-8 { transition-delay: 640ms; }
+.delay-9 { transition-delay: 720ms; }
+.delay-10 { transition-delay: 800ms; }
+
+/* --------------------------------------------------------------------------
+   2. SCROLL REVEAL SYSTEM
+   -------------------------------------------------------------------------- */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-editorial), transform 0.8s var(--ease-editorial);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade-in {
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  will-change: opacity;
+}
+
+.reveal-fade-in.is-visible {
+  opacity: 1;
+}
+
+.reveal-scale-in {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.8s var(--ease-editorial), transform 0.8s var(--ease-editorial);
+  will-change: opacity, transform;
+}
+
+.reveal-scale-in.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --------------------------------------------------------------------------
+   3. SUBTLE AMBIENT PULSES & TECHNICAL MOTION
+   -------------------------------------------------------------------------- */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.5;
+  }
+}
+
+@keyframes dieline-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+}
+
+@keyframes fold-crease {
+  0% {
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(800px) rotateX(4deg) rotateY(-5deg);
+  }
+  100% {
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. 3D PACKAGING FOLD GEOMETRY STYLES
+   -------------------------------------------------------------------------- */
+.fold-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fold-assembly {
+  transform-style: preserve-3d;
+  width: 280px;
+  height: 280px;
+  position: relative;
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+.fold-facet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--dieline-stroke);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(109, 27, 45, 0.04) 100%
+  );
+  box-shadow: inset 0 0 20px rgba(109, 27, 45, 0.05);
+  backface-visibility: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Dashed crease lines on facets */
+.fold-facet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed var(--dieline-guide);
+  pointer-events: none;
+}
+
+.facet-front  { transform: translateZ(140px); }
+.facet-back   { transform: rotateY(180deg) translateZ(140px); }
+.facet-right  { transform: rotateY(90deg) translateZ(140px); }
+.facet-left   { transform: rotateY(-90deg) translateZ(140px); }
+.facet-top    { transform: rotateX(90deg) translateZ(140px); }
+.facet-bottom { transform: rotateX(-90deg) translateZ(140px); }
+
+/* Structural dieline fold accent lines inside */
+.fold-facet-mark {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   5. ACCESSIBILITY OVERRIDES (prefers-reduced-motion)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .word-reveal-item {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .reveal-fade-up,
+  .reveal-fade-in,
+  .reveal-scale-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .fold-assembly {
+    transform: none !important;
+  }
+
+  .rotator-word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

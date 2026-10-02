@@ -1,0 +1,140 @@
+/* ==========================================================================
+   DESIGN TOKENS — EHSAN MAHER PORTFOLIO
+   Theme: Dual Visual Moods (Light Parchment & Roasted Espresso Dark)
+   Typography: Editorial (Syne, Plus Jakarta Sans, Cormorant Garamond)
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     LIGHT MOOD (Default)
+     Inspiration: Fine warm art paper, letterpress, deep burgundy ink, rich roasted brown
+     ------------------------------------------------------------------------ */
+  --bg-primary: #F8F5EE;          /* Warm off-white parchment */
+  --bg-secondary: #EFE9DE;        /* Soft warm paper card */
+  --bg-tertiary: #E5DDD0;         /* Elevated surface */
+  --bg-glass: rgba(248, 245, 238, 0.85);
+
+  --text-primary: #241A17;        /* Deep roasted espresso brown */
+  --text-secondary: #5E5049;      /* Muted editorial brown */
+  --text-tertiary: #8E7D73;       /* Faint metadata brown */
+  --text-inverse: #F8F5EE;
+
+  --accent-burgundy: #6D1B2D;     /* Deep rich burgundy */
+  --accent-burgundy-hover: #862339;
+  --accent-burgundy-subtle: rgba(109, 27, 45, 0.08);
+  --accent-burgundy-glow: rgba(109, 27, 45, 0.15);
+
+  --border-faint: rgba(36, 26, 23, 0.10);
+  --border-subtle: rgba(36, 26, 23, 0.18);
+  --border-accent: rgba(109, 27, 45, 0.40);
+
+  --dieline-stroke: rgba(109, 27, 45, 0.28);
+  --dieline-guide: rgba(36, 26, 23, 0.14);
+  --dieline-highlight: #6D1B2D;
+
+  --grain-opacity: 0.045;
+  --shadow-soft: 0 4px 20px -2px rgba(36, 26, 23, 0.06);
+  --shadow-card: 0 10px 30px -4px rgba(36, 26, 23, 0.08);
+  --shadow-elevated: 0 20px 40px -6px rgba(36, 26, 23, 0.12);
+
+  /* ------------------------------------------------------------------------
+     TYPOGRAPHY TOKENS
+     ------------------------------------------------------------------------ */
+   --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+   --font-serif: 'DM Sans', Georgia, serif;
+
+  /* Fluid Typographic Scales */
+  --text-xs: clamp(0.75rem, 0.70rem + 0.25vw, 0.825rem);
+  --text-sm: clamp(0.85rem, 0.80rem + 0.25vw, 0.95rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --text-xl: clamp(1.4rem, 1.25rem + 0.75vw, 1.75rem);
+  --text-2xl: clamp(1.85rem, 1.5rem + 1.5vw, 2.5rem);
+  --text-3xl: clamp(2.35rem, 1.8rem + 2.5vw, 3.75rem);
+  --text-4xl: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+  --text-hero: clamp(3.2rem, 2.2rem + 6.5vw, 8.5rem);
+
+  /* Tracking (Letter Spacing) */
+  --tracking-tight: -0.035em;
+  --tracking-normal: -0.01em;
+  --tracking-wide: 0.05em;
+  --tracking-widest: 0.15em;
+
+  /* ------------------------------------------------------------------------
+     SPACING & LAYOUT TOKENS
+     ------------------------------------------------------------------------ */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  --container-max: 1380px;
+  --container-wide: 1600px;
+  --container-narrow: 1040px;
+  --container-padding: clamp(1.25rem, 4vw, 3.5rem);
+
+  /* ------------------------------------------------------------------------
+     ANIMATION & TIMING TOKENS
+     Restrained Intensity 3/5: Smooth, deliberate, editorial
+     ------------------------------------------------------------------------ */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);     /* Smooth ease-out quint */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
+
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+  --duration-deliberate: 1100ms;
+
+  --theme-transition: background-color 650ms var(--ease-editorial),
+                      color 650ms var(--ease-editorial),
+                      border-color 650ms var(--ease-editorial),
+                      box-shadow 650ms var(--ease-editorial);
+
+  /* Z-Index Hierarchy */
+  --z-texture: 1;
+  --z-content: 10;
+  --z-nav: 100;
+  --z-modal: 1000;
+  --z-cursor: 9999;
+}
+
+/* --------------------------------------------------------------------------
+   DARK MOOD (Activated via data-theme="dark")
+   Inspiration: Roasted espresso beans, dark cardstock, luminous burgundy embers, alabaster
+   Never pure #000000; preserves the organic warmth of the brand.
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg-primary: #151110;          /* Deep roasted espresso */
+  --bg-secondary: #1F1917;        /* Warm dark cardstock */
+  --bg-tertiary: #2A221F;         /* Elevated surface */
+  --bg-glass: rgba(21, 17, 16, 0.88);
+
+  --text-primary: #EDE6DC;        /* Warm alabaster beige */
+  --text-secondary: #AEA196;      /* Muted sand tone */
+  --text-tertiary: #7D7066;       /* Subdued dieline tone */
+  --text-inverse: #151110;
+
+  --accent-burgundy: #B8384E;     /* Luminous warm burgundy */
+  --accent-burgundy-hover: #D24760;
+  --accent-burgundy-subtle: rgba(184, 56, 78, 0.15);
+  --accent-burgundy-glow: rgba(184, 56, 78, 0.28);
+
+  --border-faint: rgba(237, 230, 220, 0.08);
+  --border-subtle: rgba(237, 230, 220, 0.16);
+  --border-accent: rgba(184, 56, 78, 0.45);
+
+  --dieline-stroke: rgba(184, 56, 78, 0.35);
+  --dieline-guide: rgba(237, 230, 220, 0.10);
+  --dieline-highlight: #B8384E;
+
+  --grain-opacity: 0.055;
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 10px 30px -4px rgba(0, 0, 0, 0.35);
+  --shadow-elevated: 0 20px 40px -6px rgba(0, 0, 0, 0.5);
+}
